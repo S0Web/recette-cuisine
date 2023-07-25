@@ -1,7 +1,9 @@
-const addRecipe = () => {
+import React from 'react'
+
+const AddRecipe = () => {
   return (
-    <div>addRecipe</div>
+    <div>AddRecipe</div>
   )
 }
 
-export default addRecipe
+export default AddRecipe
