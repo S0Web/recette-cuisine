@@ -1,0 +1,24 @@
+.navbar-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.navbar-content :nth-child(n){
+    text-decoration: none;
+}
+
+.navbar-content h1 {
+    padding: 20px;
+    margin: 30px;
+    font-size: 3em;
+}
+
+.navbar-content .navbar-container > :last-child{
+    font-weight: 600;
+}
+.navbar-content .navbar-container > :nth-child(n) {
+    padding: 15px;
+    margin-inline: 5px;
+}
