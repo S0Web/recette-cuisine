@@ -34,11 +34,24 @@
 }
 
 .navbar-content .searchbar input {
-    width: 100%;
+    width: 90%;
     height: 46px;
-    position:absolute
+    left: 5px;
+    position:absolute;
+    border: 0;
+    font-size: 1.5em;
+}
+
+.navbar-content .searchbar input:focus {
+    outline: none
 }
 
 .navbar-content .searchbar button {
-
+    position: absolute;
+    z-index: 1;
+    right:5px;
+    top: 5px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
 }
