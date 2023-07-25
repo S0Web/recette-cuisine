@@ -1,12 +1,15 @@
 import React from 'react'
+import "./CardRecipe.css"
 
-const CardRecipe = ({image, title, des}) => {
+
+const CardRecipe = ({image, title, dif, des}) => {
     const im = {image}
   return (
-    <div>CardRecipe
-        <img src="" alt="" />
+    <div className="Ca">
+        <img src="" alt="image recette" width={50} height={50} />
         <h3>{title}</h3>
         <p>{des}</p>
+        <p>{dif}</p>
     </div>
   )
 }
