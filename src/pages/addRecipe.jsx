@@ -1,8 +1,12 @@
 import React from 'react'
+import RecipeForm from '../components/addRecipe/RecipeForm'
 
+import "./AddRecipe.css"
 const AddRecipe = () => {
   return (
-    <div>AddRecipe</div>
+    <div className='addrecipe-page'>
+      <RecipeForm />
+    </div>
   )
 }
 
