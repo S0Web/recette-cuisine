@@ -1,8 +1,10 @@
-import React from 'react'
+import RecipeForm from "../components/RecipeForm"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <RecipeForm />
+    </div>
   )
 }
 
