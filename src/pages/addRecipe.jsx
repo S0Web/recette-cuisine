@@ -1,4 +1,4 @@
-//import React from 'react'
+import React from 'react'
 import RecipeForm from '../components/addRecipe/RecipeForm'
 
 import "./AddRecipe.css"
