@@ -1,10 +1,6 @@
 import CardRecipe from "../components/CardRecipe";
-<<<<<<< HEAD
 import "./Home.css"
-=======
 import "../components/CardRecipe.css"
-
->>>>>>> 68f901b427b129647f4a88dd1bfe38e89b2933dc
 const Home = () => {
   return (
     <div >Home
