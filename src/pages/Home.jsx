@@ -1,5 +1,6 @@
 import CardRecipe from "../components/CardRecipe";
 import "../components/CardRecipe.css"
+
 const Home = () => {
   return (
     <div >Home
