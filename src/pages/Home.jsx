@@ -1,3 +1,5 @@
+import CardRecipe from '../components/CardRecipe'
+
 const Home = () => {
   return (
     <div className='cards'>Home
