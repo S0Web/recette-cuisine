@@ -12,24 +12,35 @@ const RecipeForm = () => {
   const [ingredInput, setIngredInput] = useState()
   const [quantityInput, setQuantityInput] = useState()
   const [measuresInput, setMeasuresInput] = useState()
-  const [checkInput, setCheckInput] = useState()
-  
+
   const [values, setValues] = useState([])
-  
+
+  const [isChecked, setIsChecked] = useState(false)
+  //Checkbox boolean
+  const handleCheck = () => {
+    setIsChecked(!isChecked)
+  }
+
+  //Form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newState = [...values]
     newState.push(titleInput)
-    setValues(newState)
     newState.push(textareaInput)
-    setValues(photoInput)
+    newState.push(photoInput)
+    newState.push(durationInput)
+    newState.push(difficultyInput)
+    newState.push(portionsInput)
+    newState.push(tagsInput)
+    newState.push(ingredInput)
+    newState.push(quantityInput)
+    newState.push(measuresInput)
+    newState.push(isChecked)
+    setValues(newState)
+
     console.log(newState);
 
-
-    
-    
-    
     setTitleInput("")
     setTextareaInput("")
     setPhotoInput("")
@@ -40,7 +51,7 @@ const RecipeForm = () => {
     setIngredInput("")
     setQuantityInput("")
     setMeasuresInput("")
-    setCheckInput("")
+    setIsChecked(false)
   }
 
   return (
@@ -49,8 +60,8 @@ const RecipeForm = () => {
         <input 
           type="text" 
           placeholder="Titre" 
-          onChange={e => setTitleInput(e.target.value)} 
           value={titleInput}
+          onChange={title => setTitleInput(title.target.value)} 
         />
         <textarea 
           name="" 
@@ -58,25 +69,51 @@ const RecipeForm = () => {
           cols="30" 
           rows="10" 
           placeholder="Recette"
-          onChange={e => setTextareaInput(e.target.value)} 
           value={textareaInput}
+          onChange={textarea => setTextareaInput(textarea.target.value)} 
         />
-        <input type="text" placeholder="Photo URL"/>
-        <input type="number" placeholder="Durée en minutes"/>
-        <select name="" id="">
+        <input 
+          type="text" 
+          placeholder="Photo URL" 
+          value={photoInput}
+          onChange={photo => setPhotoInput(photo.target.value)} 
+        />
+        <input 
+          type="number" 
+          placeholder="Durée en minutes"
+          value={durationInput}
+          onChange={duration => setDurationInput(duration.target.value)} 
+        />
+        <select 
+          name="" 
+          id=""
+          value={difficultyInput}
+          onChange={difficulty => setDifficultyInput(difficulty.target.value)} 
+        >
           <option value="">Difficulté</option>
           <option value="easy">Facile</option>
           <option value="normal">Moyen</option>
           <option value="hard">Difficile</option>
         </select>
-        <input type="number" placeholder="Portions"/>
+        <input 
+          type="number" 
+          placeholder="Portions"
+          value={portionsInput}  
+          onChange={portions => setPortionsInput(portions.target.value)} 
+        />
 
         <div id="tagsList" className="tags-list">
-          {/* <input className="tag" />
           <input className="tag" />
-          <input className="tag" /> */}
+          <input className="tag" />
+          <input className="tag" /> 
         </div>
-        <input type="text" placeholder="Tags"/>
+
+        <input 
+          type="text" 
+          placeholder="Tags"
+          value={tagsInput}    
+          onChange={tag => setTagsInput(tag.target.value)} 
+        />
 
 
         <div style={{
@@ -85,39 +122,61 @@ const RecipeForm = () => {
           marginTop: "25px",
           marginBottom: "30px"
         }}>
-          <input type="text" placeholder="Ingrédient" style={{width: "100px"}}/>
-          <input type="number" placeholder="quantité" style={{width: "100px"}}/>
-          <select name="" id="" style={{width: "100px"}}>
+          <input 
+            type="text" 
+            placeholder="Ingrédient" 
+            style={{width: "100px"}} 
+            value={ingredInput}  
+            onChange={ingredients => setIngredInput(ingredients.target.value)} 
+          />
+          <input 
+            type="number" 
+            placeholder="quantité" 
+            style={{width: "100px"}} 
+            value={quantityInput}  
+            onChange={quantity => setQuantityInput(quantity.target.value)}
+          />
+          <select 
+            name="" 
+            id="" 
+            style={{width: "100px"}} 
+            value={measuresInput} 
+            onChange={measure => setMeasuresInput(measure.target.value)} 
+          >
             <option value="">Unité de mesure</option>
-            <option value="">Kg</option>
-            <option value="">g</option>
-            <option value="">L</option>
-            <option value="">cl</option>
-            <option value="">ml</option>
-            <option value="">cuillère(s) à café</option>
-            <option value="">cuillère(s) à soupe</option>
-            <option value="">cuillère(s) à soupe de beurre ou margarine</option>
-            <option value="">bol(s)</option>
-            <option value="">verre(s) à moutarde</option>
-            <option value="">verre(s) à liqueur</option>
-            <option value="">grand(s) verre(s)</option>
-            <option value="">gallon(s)</option>
-            <option value="">tasse(s)</option>
-            <option value="">tasse(s) de farine</option>
-            <option value="">tasse(s) de fécule</option>
-            <option value="">tasse(s) de sucre en poudre</option>
-            <option value="">tasse(s) de sucre glacé</option>
-            <option value="">tasse(s) de sucre glacé</option>
-            <option value="">tasse(s) de beurre ou margarine</option>
-            <option value="">tasse(s) de noix, noisette, amandes concassées</option>
-            <option value="">tasse(s) de fromage râpé</option>
-            <option value="">tasse(s) de miel ou de sirop d&apos;érable</option>
-            <option value="">tasse(s) de crème fraiche</option>
-            <option value="">tasse(s) de fruits secs (raisins secs ou autres)</option>
-            <option value="">tasse(s) de fruits frais (framboises, cerises, etc.)</option>
-            <option value="">tasse(s) de céréales</option>
+            <option value="kg">Kg</option>
+            <option value="g">g</option>
+            <option value="l">L</option>
+            <option value="cl">cl</option>
+            <option value="ml">ml</option>
+            <option value="cuillère(s) à café">cuillère(s) à café</option>
+            <option value="cuillère(s) à soupe">cuillère(s) à soupe</option>
+            <option value="cuillère(s) à soupe de beurre ou margarine">cuillère(s) à soupe de beurre ou margarine</option>
+            <option value="bol(s)">bol(s)</option>
+            <option value="verre(s) à moutarde">verre(s) à moutarde</option>
+            <option value="verre(s) à liqueur">verre(s) à liqueur</option>
+            <option value="grand(s) verre(s)">grand(s) verre(s)</option>
+            <option value="gallon(s)">gallon(s)</option>
+            <option value="tasse(s)">tasse(s)</option>
+            <option value="tasse(s) de farine">tasse(s) de farine</option>
+            <option value="tasse(s) de fécule">tasse(s) de fécule</option>
+            <option value="tasse(s) de sucre en poudre">tasse(s) de sucre en poudre</option>
+            <option value="tasse(s) de sucre glacé">tasse(s) de sucre glacé</option>
+            <option value="tasse(s) de sucre glacé">tasse(s) de sucre glacé</option>
+            <option value="tasse(s) de beurre ou margarine">tasse(s) de beurre ou margarine</option>
+            <option value="tasse(s) de noix, noisette, amandes concassées">tasse(s) de noix, noisette, amandes concassées</option>
+            <option value="tasse(s) de fromage râpé">tasse(s) de fromage râpé</option>
+            <option value="tasse(s) de miel ou de sirop d&apos;érable">tasse(s) de miel ou de sirop d&apos;érable</option>
+            <option value="tasse(s) de crème fraiche">tasse(s) de crème fraiche</option>
+            <option value="tasse(s) de fruits secs (raisins secs ou autres)">tasse(s) de fruits secs (raisins secs ou autres)</option>
+            <option value="tasse(s) de fruits frais (framboises, cerises, etc.)">tasse(s) de fruits frais (framboises, cerises, etc.)</option>
+            <option value="tasse(s) de céréales">tasse(s) de céréales</option>
           </select>
-          <input type="checkbox" name="" id=""/>
+          <input 
+            type="checkbox" 
+            checked={isChecked}
+            onChange={handleCheck}
+          />
         </div>
         
         <button>valider</button>
