@@ -1,10 +1,11 @@
 import React from 'react'
 import './DetailedRecipes.css'
 
-const DetailedRecipes = ({ recipetitle, ingredient, time, recipedescription, howmuchpersons, howmuchingredients, unity }) => {
+const DetailedRecipes = ({ recipetitle, ingredient, time, recipedescription, howmuchpersons, howmuchingredients, unity, urlphoto }) => {
   return (
     <div className="detailed-recipe">
       <h2>{recipetitle}</h2>
+      <img src={urlphoto} alt="" />
       <div className="first-item">
         <div className="ingredients">
           <h4>Ingrédients :</h4>
@@ -41,7 +42,8 @@ DetailedRecipes.defaultProps = {
   recipedescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos eveniet debitis cum. Ut officiis adipisci dolorem repellat harum vero tempora, omnis laudantium exercitationem ipsam et eveniet error itaque distinctio doloremque veritatis. Eum eos voluptatibus doloribus esse quidem repudiandae aliquam quod.',
   howmuchpersons: 'x',
   howmuchingredients: '3',
-  unity: 'kg'
+  unity: 'kg',
+  urlphoto: 'https://img.freepik.com/vecteurs-libre/gateau-aux-carottes-recette-dessine-main_23-2148539487.jpg?size=626&ext=jpg&ga=GA1.2.848368829.1689859106&semt=ais'
 }
 
 export default DetailedRecipes

@@ -1,5 +1,11 @@
+
+.home-content {
+  display: flex;
+  justify-content: center;
+}
 .cards {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 75vw;
 }
