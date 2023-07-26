@@ -2,13 +2,11 @@ import React from 'react'
 import "./CardRecipe.css"
 
 
-const CardRecipe = ({image, title, dif, temps}) => {
+const CardRecipe = ({image, title, dif, temps, onClick}) => {
   return (
-    <div className="Ca">
-        <img src={image} alt="image recette" width={250} height={250} />
+    <div className="card-recipe" onClick={onClick}>
+        <img src={image} alt="image recette" />
         <h3>{title}</h3>
-        <p>Difficulté : {dif}</p>
-        <p>Temps de préparation : {temps}</p>
     </div>
   )
 }
