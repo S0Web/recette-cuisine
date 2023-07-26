@@ -5,7 +5,8 @@ import Home from './pages/Home'
 import Entrees from './pages/Entrees'
 import Plats from './pages/Plats'
 import Desserts from './pages/Desserts'
-import AddRecipe from './pages/addRecipe'
+import AddRecipe from './pages/AddRecipe'
+import DetailedRecipeTemplate from './pages/DetailedRecipeTemplate'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Navbar/>
         <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/detailedrecipetemplate" element={<DetailedRecipeTemplate/>} />
         <Route path="/entrees" element={<Entrees/>} />
         <Route path="/plats" element={<Plats/>} />
         <Route path="/desserts" element={<Desserts/>} />
