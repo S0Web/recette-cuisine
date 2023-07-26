@@ -2,23 +2,59 @@ import { useState } from "react";
 import "./RecipeForm.css"
 
 const RecipeForm = () => {
+  //les infos à récup
   const [titleInput, setTitleInput] = useState()
   const [textareaInput, setTextareaInput] = useState()
   const [photoInput, setPhotoInput] = useState()
   const [durationInput, setDurationInput] = useState()
   const [difficultyInput, setDifficultyInput] = useState()
   const [portionsInput, setPortionsInput] = useState()
-  const [tagsInput, setTagsInput] = useState()
+  const [tagsInput, setTagsInput] = useState([])
   const [ingredInput, setIngredInput] = useState()
   const [quantityInput, setQuantityInput] = useState()
   const [measuresInput, setMeasuresInput] = useState()
 
+  //stocker les informations du formulaire
   const [values, setValues] = useState([])
-
+  
   const [isChecked, setIsChecked] = useState(false)
+  
+  //stocker les tags
+  const [defaultTags, setDefaultTags] = useState([
+    {id: 0, tag: "Petit déjeuner"},
+    {id: 1, tag: "Déjeuner"},
+    {id: 2, tag: "Dessert"},
+    {id: 3, tag: "Collation"},
+    {id: 4, tag: "Dîner"}
+  ])
+  
+  // stocker les ingrédients
+  const [ingredientArray, setIngredientArray] = useState([])
+
+  //l'ajout d'un ingrédient
+  const addIngredients = () => {
+    const newState = [...ingredientArray]
+    newState.push(ingredInput + " " + quantityInput + " " + measuresInput)
+    setIngredientArray(newState)
+
+    setIngredInput("")
+    setQuantityInput("")
+    setMeasuresInput("")
+  }
+  
   //Checkbox boolean
   const handleCheck = () => {
     setIsChecked(!isChecked)
+  }
+
+  //ajouter l'array et écrire en même temps
+  const handleClick = (id, name) => {
+    setDefaultTags(prevState => {
+      const tabtemp = [...tagsInput]
+      tabtemp.push(name)
+      setTagsInput(tabtemp)
+      return prevState.filter(tag => tag.id !== id)
+    })
   }
 
   //Form submit
@@ -33,14 +69,11 @@ const RecipeForm = () => {
     newState.push(difficultyInput)
     newState.push(portionsInput)
     newState.push(tagsInput)
-    newState.push(ingredInput)
-    newState.push(quantityInput)
-    newState.push(measuresInput)
+    newState.push(ingredientArray)
     newState.push(isChecked)
     setValues(newState)
 
-    console.log(newState);
-
+    
     setTitleInput("")
     setTextareaInput("")
     setPhotoInput("")
@@ -48,10 +81,9 @@ const RecipeForm = () => {
     setDifficultyInput("")
     setPortionsInput("")
     setTagsInput("")
-    setIngredInput("")
-    setQuantityInput("")
-    setMeasuresInput("")
     setIsChecked(false)
+    
+    console.log(newState);
   }
 
   return (
@@ -103,9 +135,16 @@ const RecipeForm = () => {
         />
 
         <div id="tagsList" className="tags-list">
-          <input className="tag" />
-          <input className="tag" />
-          <input className="tag" /> 
+          {
+            defaultTags.map(tag => 
+              <button 
+                key={tag.id} 
+                className="tag" 
+                onClick={() => handleClick(tag.id, tag.tag)}>
+                {tag.tag}
+              </button>
+            )
+          }
         </div>
 
         <input 
@@ -128,14 +167,14 @@ const RecipeForm = () => {
             style={{width: "100px"}} 
             value={ingredInput}  
             onChange={ingredients => setIngredInput(ingredients.target.value)} 
-          />
+            />
           <input 
             type="number" 
             placeholder="quantité" 
             style={{width: "100px"}} 
             value={quantityInput}  
             onChange={quantity => setQuantityInput(quantity.target.value)}
-          />
+            />
           <select 
             name="" 
             id="" 
@@ -172,13 +211,25 @@ const RecipeForm = () => {
             <option value="tasse(s) de fruits frais (framboises, cerises, etc.)">tasse(s) de fruits frais (framboises, cerises, etc.)</option>
             <option value="tasse(s) de céréales">tasse(s) de céréales</option>
           </select>
-          <input 
+          <button 
             type="checkbox" 
             checked={isChecked}
+            onClick={addIngredients}
             onChange={handleCheck}
-          />
+          >
+            Ajouter
+          </button>      
         </div>
-        
+
+        <div style={{display: "flex", flexFlow: "column wrap", gap: "20px", fontSize: "15px"}}>
+          {
+            ingredientArray.map((ingreditent, i) => 
+              <>
+                {ingreditent} <br /> <br />
+              </>
+            )
+          }
+        </div>
         <button>valider</button>
       </form>
     </div>
