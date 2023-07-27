@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, } from "react";
 import "./RecipeForm.css"
 
 const RecipeForm = () => {
@@ -15,7 +15,7 @@ const RecipeForm = () => {
   const [measuresInput, setMeasuresInput] = useState()
 
   //stocker les informations du formulaire
-  const [values, setValues] = useState([])
+  const [values, setValues] = useState([]) 
   
   const [isChecked, setIsChecked] = useState(false)
   
@@ -89,51 +89,63 @@ const RecipeForm = () => {
   return (
     <div className="recipe-form">
       <form onSubmit={handleSubmit}>
+        <h4>Titre de la recette</h4>
         <input 
+          className="text-input"
           type="text" 
-          placeholder="Titre" 
+          placeholder="Boeuf bourgignon, Pain à l'ail..." 
           value={titleInput}
           onChange={title => setTitleInput(title.target.value)} 
         />
+        <h4>Recette</h4>
         <textarea 
           name="" 
           id="" 
           cols="30" 
           rows="10" 
-          placeholder="Recette"
+          placeholder="Ecrivez votre recette ici"
           value={textareaInput}
           onChange={textarea => setTextareaInput(textarea.target.value)} 
         />
+        <h4>URL Photo</h4>
         <input 
+          className="text-input"
           type="text" 
-          placeholder="Photo URL" 
+          placeholder="https://exemple.com/photo-exemple" 
           value={photoInput}
           onChange={photo => setPhotoInput(photo.target.value)} 
         />
+        <h4>Durée de préparation</h4>
+        <div className="during">
         <input 
+          className="text-input during-input"
           type="number" 
           placeholder="Durée en minutes"
           value={durationInput}
           onChange={duration => setDurationInput(duration.target.value)} 
-        />
+          />
+          <p>minutes</p>
+          </div>
+        <h4>Difficulté</h4>
         <select 
           name="" 
           id=""
           value={difficultyInput}
           onChange={difficulty => setDifficultyInput(difficulty.target.value)} 
         >
-          <option value="">Difficulté</option>
           <option value="easy">Facile</option>
           <option value="normal">Moyen</option>
           <option value="hard">Difficile</option>
         </select>
+        <h4>Portions</h4>
         <input 
           type="number" 
-          placeholder="Portions"
+            className="text-input"
+          placeholder="Pour combien de personne ?"
           value={portionsInput}  
           onChange={portions => setPortionsInput(portions.target.value)} 
         />
-
+        <h4>Tags</h4>
         <div id="tagsList" className="tags-list">
           {
             defaultTags.map(tag => 
@@ -146,22 +158,24 @@ const RecipeForm = () => {
             )
           }
         </div>
-
+          
         <input 
+          className="text-input"
           type="text" 
-          placeholder="Tags"
+          placeholder="Petit-déjeûner, ..."
           value={tagsInput}    
           onChange={tag => setTagsInput(tag.target.value)} 
         />
 
-
+        <h4>Ingrédients</h4>
         <div style={{
           display: "flex",
           gap: "10px",
-          marginTop: "25px",
           marginBottom: "30px"
         }}>
+          
           <input 
+            className="text-input"
             type="text" 
             placeholder="Ingrédient" 
             style={{width: "100px"}} 
@@ -169,6 +183,7 @@ const RecipeForm = () => {
             onChange={ingredients => setIngredInput(ingredients.target.value)} 
             />
           <input 
+            className="text-input"
             type="number" 
             placeholder="quantité" 
             style={{width: "100px"}} 
@@ -212,6 +227,7 @@ const RecipeForm = () => {
             <option value="tasse(s) de céréales">tasse(s) de céréales</option>
           </select>
           <button 
+            className="add-button"
             type="checkbox" 
             checked={isChecked}
             onClick={addIngredients}
@@ -230,7 +246,9 @@ const RecipeForm = () => {
             )
           }
         </div>
-        <button>valider</button>
+        <div className="submit-button">
+        <button id="submit-button" type="submit">Créer une recette</button>
+        </div>
       </form>
     </div>
   )

@@ -1,10 +1,13 @@
 .detailed-recipe {
-    border: 1px solid;
     border-radius: 5px;
     width: 50vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.501);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.538);
+
 }
 .detailed-recipe h2 {
     margin: 2em;

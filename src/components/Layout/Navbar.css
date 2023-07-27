@@ -30,7 +30,8 @@
     width: 948px;
     height: 50px;
     margin-block: 30px;
-    position: relative
+    position: relative;
+    background-color: white;
 }
 
 .navbar-content .searchbar input {
