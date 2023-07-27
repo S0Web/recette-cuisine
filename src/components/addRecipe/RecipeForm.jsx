@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RecipeForm.css"
-import { useDetailed } from "../contexts/KitchenRecipeContext";
 
 const RecipeForm = () => {
   //les infos à récup
@@ -17,7 +16,7 @@ const RecipeForm = () => {
   const [measuresInput, setMeasuresInput] = useState()
 
   //stocker les informations du formulaire
-  const {datas, setDatas} = useDetailed()
+  const [values, setValues] = useState([])
   
   //stocker les tags
   const [defaultTags, setDefaultTags] = useState([
@@ -64,7 +63,7 @@ const RecipeForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newState = [...datas]
+    const newState = [...values]
     newState.push(titleInput)
     newState.push(textareaInput)
     newState.push(photoInput)
@@ -73,7 +72,7 @@ const RecipeForm = () => {
     newState.push(portionsInput)
     newState.push(tagsInput)
     newState.push(ingredientArray)
-    setDatas(newState)
+    setValues(newState)
 
     
     setTitleInput("")

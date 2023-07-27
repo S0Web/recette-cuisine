@@ -4,9 +4,6 @@ export const KitchenRecipeContext = React.createContext()
 
 const KitchenRecipeProvider = ({children, values}) => {
 
-  
-
-  
   return (
     <KitchenRecipeContext.Provider
       value={{
