@@ -1,16 +1,13 @@
-* {
+*,body {
     font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
     background: url('./assets/background.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow-x: hidden;
-    background-color: rgba(255, 255, 255, 0.56);
+    background-color: rgba(132, 127, 141, 0.56);
+    background-blend-mode: multiply;
 }
 

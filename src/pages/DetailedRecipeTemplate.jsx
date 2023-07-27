@@ -1,19 +1,22 @@
-import React from 'react'
-import DetailedRecipes from '../components/DetailedRecipes/DetailedRecipes'
-import './DetailedRecipeTemplate.css'
-import KitchenRecipeProvider, { useDetailed } from '../components/contexts/KitchenRecipeContext'
+import React, { useEffect } from "react";
+import DetailedRecipes from "../components/DetailedRecipes/DetailedRecipes";
+import "./DetailedRecipeTemplate.css";
+import KitchenRecipeProvider, {
+  useDetailed,
+} from "../components/contexts/KitchenRecipeContext";
 
 const DetailedRecipeTemplate = () => {
-    const {datas} = useDetailed()
+  const { datas } = useDetailed();
 
+  useEffect(() => {
     console.log(datas);
-    return (
-        <div className="detailed-recipe-template">
-            <KitchenRecipeProvider>
-              <DetailedRecipes/>  
-            </KitchenRecipeProvider>
-        </div>
-  )
-}
+  }, [datas]);
 
-export default DetailedRecipeTemplate
+  return (
+    <div className="detailed-recipe-template">
+      <DetailedRecipes />
+    </div>
+  );
+};
+
+export default DetailedRecipeTemplate;

@@ -17,6 +17,7 @@
     width: 400px;
     height: 400px;
     margin: 30px;
+    object-fit: cover;
 }
 
 .detailed-recipe .first-item {

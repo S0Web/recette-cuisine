@@ -18,7 +18,6 @@ form {
 
 
 .tag {
-  width: auto;
   display: flex;
   align-items: center;
   height: 15PX;
@@ -70,11 +69,14 @@ form {
   border-radius: 5px;
   border: none;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.71);
+  padding-left: 10px
 }
 .recipe-form textarea{
   border-radius: 5px;
   border: none;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.71);
+  padding-left: 10px;
+  padding-top: 5px
 }
 .recipe-form select{
   border-radius: 5px;

@@ -1,25 +1,25 @@
 import React, { useState, useContext } from "react";
 
-export const KitchenRecipeContext = React.createContext()
+export const KitchenRecipeContext = React.createContext();
 
-const KitchenRecipeProvider = ({children, values}) => {
-  const [datas, setDatas] = useState()
+const KitchenRecipeProvider = ({ values, children }) => {
+  const [datas, setDatas] = useState([]);
 
   return (
     <KitchenRecipeContext.Provider
       value={{
         ...values,
         datas,
-        setDatas
+        setDatas,
       }}
     >
       {children}
     </KitchenRecipeContext.Provider>
-  )
-}
+  );
+};
 
-export default KitchenRecipeProvider
+export default KitchenRecipeProvider;
 
 export const useDetailed = () => {
-  return useContext(KitchenRecipeContext)
-}
+  return useContext(KitchenRecipeContext);
+};
