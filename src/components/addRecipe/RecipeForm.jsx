@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./RecipeForm.css"
+import { useDetailed } from "../contexts/KitchenRecipeContext";
 
 const RecipeForm = () => {
   //les infos à récup
@@ -15,9 +17,7 @@ const RecipeForm = () => {
   const [measuresInput, setMeasuresInput] = useState()
 
   //stocker les informations du formulaire
-  const [values, setValues] = useState([])
-  
-  const [isChecked, setIsChecked] = useState(false)
+  const {datas, setDatas} = useDetailed()
   
   //stocker les tags
   const [defaultTags, setDefaultTags] = useState([
@@ -40,12 +40,11 @@ const RecipeForm = () => {
     setIngredInput("")
     setQuantityInput("")
     setMeasuresInput("")
-  }
-  
-  //Checkbox boolean
-  const handleCheck = () => {
-    setIsChecked(!isChecked)
-  }
+
+    if (document.getElementById("myCheck").checked = true) {
+      document.getElementById("myCheck").checked = false
+    }
+  } 
 
   //ajouter l'array et écrire en même temps
   const handleClick = (id, name) => {
@@ -57,11 +56,15 @@ const RecipeForm = () => {
     })
   }
 
+  //on submit redirect 
+  const navigate = useNavigate();
+
+
   //Form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newState = [...values]
+    const newState = [...datas]
     newState.push(titleInput)
     newState.push(textareaInput)
     newState.push(photoInput)
@@ -70,8 +73,7 @@ const RecipeForm = () => {
     newState.push(portionsInput)
     newState.push(tagsInput)
     newState.push(ingredientArray)
-    newState.push(isChecked)
-    setValues(newState)
+    setDatas(newState)
 
     
     setTitleInput("")
@@ -81,9 +83,10 @@ const RecipeForm = () => {
     setDifficultyInput("")
     setPortionsInput("")
     setTagsInput("")
-    setIsChecked(false)
+
+    navigate('/detailedrecipetemplate')
     
-    console.log(newState);
+    //console.log(newState);
   }
 
   return (
@@ -94,6 +97,7 @@ const RecipeForm = () => {
           placeholder="Titre" 
           value={titleInput}
           onChange={title => setTitleInput(title.target.value)} 
+          required
         />
         <textarea 
           name="" 
@@ -103,24 +107,28 @@ const RecipeForm = () => {
           placeholder="Recette"
           value={textareaInput}
           onChange={textarea => setTextareaInput(textarea.target.value)} 
+          required
         />
         <input 
           type="text" 
           placeholder="Photo URL" 
           value={photoInput}
           onChange={photo => setPhotoInput(photo.target.value)} 
+          required
         />
         <input 
           type="number" 
           placeholder="Durée en minutes"
           value={durationInput}
           onChange={duration => setDurationInput(duration.target.value)} 
+          required
         />
         <select 
           name="" 
           id=""
           value={difficultyInput}
           onChange={difficulty => setDifficultyInput(difficulty.target.value)} 
+          required
         >
           <option value="">Difficulté</option>
           <option value="easy">Facile</option>
@@ -132,6 +140,7 @@ const RecipeForm = () => {
           placeholder="Portions"
           value={portionsInput}  
           onChange={portions => setPortionsInput(portions.target.value)} 
+          required
         />
 
         <div id="tagsList" className="tags-list">
@@ -152,6 +161,7 @@ const RecipeForm = () => {
           placeholder="Tags"
           value={tagsInput}    
           onChange={tag => setTagsInput(tag.target.value)} 
+          required
         />
 
 
@@ -167,14 +177,14 @@ const RecipeForm = () => {
             style={{width: "100px"}} 
             value={ingredInput}  
             onChange={ingredients => setIngredInput(ingredients.target.value)} 
-            />
+          />
           <input 
             type="number" 
             placeholder="quantité" 
             style={{width: "100px"}} 
             value={quantityInput}  
             onChange={quantity => setQuantityInput(quantity.target.value)}
-            />
+          />
           <select 
             name="" 
             id="" 
@@ -211,14 +221,12 @@ const RecipeForm = () => {
             <option value="tasse(s) de fruits frais (framboises, cerises, etc.)">tasse(s) de fruits frais (framboises, cerises, etc.)</option>
             <option value="tasse(s) de céréales">tasse(s) de céréales</option>
           </select>
-          <button 
-            type="checkbox" 
-            checked={isChecked}
+          <input
+            id="myCheck"
+            type="checkbox"
+            checked={false} 
             onClick={addIngredients}
-            onChange={handleCheck}
-          >
-            Ajouter
-          </button>      
+          /> 
         </div>
 
         <div style={{display: "flex", flexFlow: "column wrap", gap: "20px", fontSize: "15px"}}>
@@ -230,7 +238,7 @@ const RecipeForm = () => {
             )
           }
         </div>
-        <button>valider</button>
+        <button type="submit">valider</button>
       </form>
     </div>
   )

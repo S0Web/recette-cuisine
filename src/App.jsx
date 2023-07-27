@@ -13,16 +13,16 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
-      <Navbar/>
-        <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/detailedrecipetemplate" element={<DetailedRecipeTemplate/>} />
-        <Route path="/entrees" element={<Entrees/>} />
-        <Route path="/plats" element={<Plats/>} />
-        <Route path="/desserts" element={<Desserts/>} />
-        <Route path="/addrecipe" element={<AddRecipe/>} />
-        </Routes>
+      <BrowserRouter>
+          <Navbar/>
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/detailedrecipetemplate" element={<DetailedRecipeTemplate/>} />
+            <Route path="/entrees" element={<Entrees/>} />
+            <Route path="/plats" element={<Plats/>} />
+            <Route path="/desserts" element={<Desserts/>} />
+            <Route path="/addrecipe" element={<AddRecipe/>} />
+          </Routes>
       </BrowserRouter>
     </>
   )
