@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RecipeForm.css"
+import { useDetailed } from "../contexts/KitchenRecipeContext";
 
 const RecipeForm = () => {
   //les infos à récup
@@ -17,6 +18,7 @@ const RecipeForm = () => {
 
   //stocker les informations du formulaire
   const [values, setValues] = useState([])
+  const {datas, setDatas} = useDetailed()
   
   //stocker les tags
   const [defaultTags, setDefaultTags] = useState([
