@@ -104,7 +104,8 @@ form {
 }
 
 .during p {
-  padding-left : 40px
+  padding-left : 40px;
+  margin: 0
 }
 
 .submit-button {
