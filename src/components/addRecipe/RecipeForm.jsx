@@ -240,6 +240,9 @@ const RecipeForm = () => {
           }
         </div>
         <button type="submit">valider</button>
+        <div className="submit-button">
+        <button id="submit-button" type="submit">Créer ungfdge recette</button>
+        </div>
       </form>
     </div>
   )
