@@ -11,8 +11,8 @@ const Navbar = () => {
 
       <div className="navbar-items">    
         <Link to="/detailedrecipetemplate">TEMPLATE DETAILED RECIPE</Link>
-        <Link to="/entrees">Entrées</Link>
-        <Link to="/plats">Plats</Link>
+        <Link to="/starters">Entrées</Link>
+        <Link to="/dishes">Plats</Link>
         <Link to="/desserts">Desserts</Link>
         <Link to="/AddRecipe">Créer une recette</Link>
       </div>

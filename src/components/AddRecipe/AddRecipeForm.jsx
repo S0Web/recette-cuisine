@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./RecipeForm.css"
+import "./AddRecipeForm.css"
 import { useDetailed } from "../contexts/KitchenRecipeContext";
 
 const RecipeForm = () => {
