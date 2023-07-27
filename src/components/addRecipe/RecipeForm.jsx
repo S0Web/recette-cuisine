@@ -247,7 +247,7 @@ const RecipeForm = () => {
           }
         </div>
         <div className="submit-button">
-        <button id="submit-button" type="submit">Créer une recette</button>
+        <button id="submit-button" type="submit">Créer ungfdge recette</button>
         </div>
       </form>
     </div>
